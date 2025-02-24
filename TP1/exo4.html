@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+    <title>Document</title>
+</head>
+<style>
+    .rouge {
+        color: red;
+    }
+    .bleu {
+        color: blue;
+    }
+    .invisible {
+        display: none;
+    }
+</style>
+<body>
+    <div id="app">
+        <ul>
+            <li>Couleur de la police :
+                <br><input type="radio" id="redChoice" v-model="color" value="rouge"> <label for="redChoice">Rouge</label> <br>
+                <input type="radio" id="blueChoice" v-model="color" value="bleu"> <label for="blueChoice">Bleu</label>
+            </li>
+            <li>
+                <div>Afficher Cacher le paragraphe ?</div>
+                <input type="checkbox" v-model="isVisible">
+            </li>
+        </ul>
+        <div :class="color" v-bind:class="{ invisible: !isVisible }">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. A nisi animi et, molestias fugit, voluptates voluptatum maxime asperiores laboriosam optio architecto. Rerum quis, accusamus dolorem fugiat deleniti magni excepturi incidunt?
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    color: '',
+                    isVisible: true,
+                };
+            },
+        }).mount('#app');
+    </script>
+</body>
+</html>
